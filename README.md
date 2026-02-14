@@ -13,6 +13,7 @@
 - Login system
 - Logout
 - Admin-only pages (Employees, Departments, Accounts)
+  - updated to dropdown button(02/14/2026)
 - Your login info stays saved when you refresh
 
 ##  What's Left

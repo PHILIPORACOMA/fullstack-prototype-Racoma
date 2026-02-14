@@ -40,13 +40,17 @@ function saveToStorage() {
 // Function: setAuthState(isAuth, user)
 function setAuthState(isAuthenticated, user = null) {
     const body = document.body;
+    const navName = document.getElementById('nav-display-name');
     
     if (isAuthenticated && user) {
         currentUser = user;
         localStorage.setItem('auth_token', user.email); 
         
+        navName.textContent = user.role === 'admin' ? 'Admin' : user.firstName;
+        
         body.classList.remove('not-authenticated');
         body.classList.add('authenticated');
+        body.classList.toggle('is-admin', user.role === 'admin');
         
         // Phase 3.D: Toggles body.is-admin
         if (user.role === 'admin') {

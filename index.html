@@ -24,25 +24,24 @@
                         <a class="nav-link" href="#register">Register</a>
                     </li>
 
-                    <li class="nav-item role-logged-in">
-                        <a class="nav-link" href="#profile">Profile</a>
-                    </li>
-                    <li class="nav-item role-logged-in">
-                        <a class="nav-link" href="#requests">My Requests</a>
-                    </li>
-                    
-                    <li class="nav-item role-admin">
-                        <a class="nav-link" href="#employees">Employees</a>
-                    </li>
-                    <li class="nav-item role-admin">
-                        <a class="nav-link" href="#departments">Departments</a>
-                    </li>
-                    <li class="nav-item role-admin">
-                        <a class="nav-link" href="#accounts">Accounts</a>
-                    </li>
+                    <li class="nav-item dropdown role-logged-in">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="nav-display-name">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                            <li><a class="dropdown-item" href="#profile">Profile</a></li>
+                            
+                            <li class="role-admin"><a class="dropdown-item" href="#employees">Employees</a></li>
+                            <li class="role-admin"><a class="dropdown-item" href="#accounts">Accounts</a></li>
+                            <li class="role-admin"><a class="dropdown-item" href="#departments">Departments</a></li>
+                            
+                            <li><a class="dropdown-item" href="#requests">My Requests</a></li>
 
-                    <li class="nav-item role-logged-in">
-                        <a class="nav-link btn btn-danger btn-sm text-white ms-2" href="#" onclick="logout()">Logout</a>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <button class="dropdown-item text-danger" onclick="logout()">Logout</button>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -69,33 +68,33 @@
         </section>
 
        <section id="register" class="page">
-    <div class="card mx-auto" style="max-width: 500px;">
-        <div class="card-header bg-dark text-white">Register</div>
-        <div class="card-body">
-            <form id="register-form">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">First Name</label>
-                        <input type="text" id="reg-fname" class="form-control" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" id="reg-lname" class="form-control" required>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" id="reg-email" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Password (min 6 chars)</label>
-                    <input type="password" id="reg-password" class="form-control" minlength="6" required>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Register</button>
-            </form>
-        </div>
-    </div>
-</section>
+         <div class="card mx-auto" style="max-width: 500px;">
+             <div class="card-header bg-dark text-white">Register</div>
+             <div class="card-body">
+                 <form id="register-form">
+                     <div class="row">
+                         <div class="col-md-6 mb-3">
+                             <label class="form-label">First Name</label>
+                             <input type="text" id="reg-fname" class="form-control" required>
+                         </div>
+                         <div class="col-md-6 mb-3">
+                             <label class="form-label">Last Name</label>
+                             <input type="text" id="reg-lname" class="form-control" required>
+                         </div>
+                     </div>
+                     <div class="mb-3">
+                         <label class="form-label">Email</label>
+                         <input type="email" id="reg-email" class="form-control" required>
+                     </div>
+                     <div class="mb-3">
+                         <label class="form-label">Password (min 6 chars)</label>
+                         <input type="password" id="reg-password" class="form-control" minlength="6" required>
+                     </div>
+                     <button type="submit" class="btn btn-success w-100">Register</button>
+                 </form>
+             </div>
+          </div>
+        </section>
 
         <section id="verify-email" class="page">
             <div class="alert alert-warning">
