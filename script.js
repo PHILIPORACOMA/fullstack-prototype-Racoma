@@ -119,6 +119,12 @@ function handleRouting() {
         window.location.hash = '#profile';
         return;
     }
+    if (hash === '#login') {
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) {
+            loginForm.reset();
+        }
+    }
 
     // 3. UI Switching: Hide all, show matching
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
