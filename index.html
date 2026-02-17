@@ -140,17 +140,72 @@
                 <h2>Employees</h2>
                 <button class="btn btn-success">+ Add Employee</button>
             </div>
-            <table class="table table-striped">
-                <thead><tr><th>ID</th><th>Name</th><th>Position</th><th>Dept</th><th>Actions</th></tr></thead>
-                <tbody id="employees-table-body">
-                    </tbody>
-            </table>
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <table class="table table-hover mb-0">
+                            <thead class="table-light"><tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Dept</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employees-table-body">
+                                </tbody>
+                    </table>
+                </div>
+            </div>    
+        </section>
+
+        <section id="accounts" class="page">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>Manage Accounts</h2>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#accountModal" onclick="prepareAddAccount()">
+                    + Add Account
+                </button>
+            </div>
+            <div class="card">
+               <div class="card-body p-0">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Verified</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="accounts-table">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
 
         <section id="departments" class="page">
-            <h2>Departments</h2>
-            <ul class="list-group" id="dept-list">
-                </ul>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>Departments</h2>
+                <button class="btn btn-success" onclick="alert('Add Department: Not implemented')">
+                    + Add Department
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-body p-0">
+                    <table class="table table-striped mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dept-table">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
 
     </main>
