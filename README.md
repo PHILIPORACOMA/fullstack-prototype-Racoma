@@ -5,13 +5,14 @@
 
 ##  What's Done
 
-**Phases 1-3 Complete:**
+**Phases 1-3 complete:**
 - Navigation menu (shows different buttons for logged-in vs logged-out users)
 - Pages that hide/show based on where you navigate
 - Registration system (email + password)
 - Email verification (simulated button)
 - Login system
 - Logout
+  - fixed the login fields when logged out(02/17/2026)
 - Admin-only pages (Employees, Departments, Accounts)
   - updated to dropdown button(02/14/2026)
 - Your login info stays saved when you refresh
