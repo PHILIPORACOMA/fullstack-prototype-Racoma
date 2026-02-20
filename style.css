@@ -24,10 +24,6 @@ body.is-admin .role-admin {
     display: block !important;
 }
 
-.text-danger {
-    color: #dc3545 !important;
-}
-
 /* Helper Animation */
 @keyframes fadeIn {
     from { opacity: 0; }
