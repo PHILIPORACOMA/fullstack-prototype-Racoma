@@ -228,6 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('unverified_email', email);
             document.getElementById('verify-email-display').textContent = email;
             
+            // Clear form fields
+            regForm.reset();
+            
             window.location.hash = '#verify-email';
         });
     }
