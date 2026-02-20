@@ -665,29 +665,82 @@ function renderDepartmentsTable() {
                 <td>${dept.name}</td>
                 <td>${dept.description}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary" onclick="editDepartment(${dept.id})">Edit</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteDepartment(${dept.id})">Delete</button>
+                    <button class="btn btn-sm btn-primary" onclick="prepareEditDepartment(${dept.id})" data-bs-toggle="modal" data-bs-target="#departmentModal">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="prepareDeleteDepartment(${dept.id})" data-bs-toggle="modal" data-bs-target="#deleteDepartmentModal">Delete</button>
                 </td>
             </tr>
         `;
     });
 }   
 
-function editDepartment(id) {
+// Department modal-driven CRUD
+let currentEditingDepartmentId = null;
+let currentDeleteDepartmentId = null;
+
+function prepareAddDepartment() {
+    currentEditingDepartmentId = null;
+    const form = document.getElementById('department-form');
+    if (form) form.reset();
+}
+
+function prepareEditDepartment(id) {
+    currentEditingDepartmentId = id;
     const dept = db.departments.find(d => d.id === id);
-    // For now, using a simple prompt to follow Phase 6 instructions
-    const newName = prompt("Enter new department name:", dept.name);
-    if (newName) {
-        dept.name = newName;
-        saveToStorage();
-        renderDepartmentsTable();
+    if (!dept) return;
+    document.getElementById('dept-name').value = dept.name;
+    document.getElementById('dept-desc').value = dept.description || '';
+}
+
+function handleDepartmentSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('dept-name').value.trim();
+    const desc = document.getElementById('dept-desc').value.trim();
+
+    if (!name) {
+        alert('Department name is required');
+        return;
+    }
+
+    if (currentEditingDepartmentId) {
+        const dept = db.departments.find(d => d.id === currentEditingDepartmentId);
+        if (dept) {
+            dept.name = name;
+            dept.description = desc;
+            showToast('Department Updated');
+        }
+    } else {
+        const newDept = {
+            id: Date.now(),
+            name,
+            description: desc
+        };
+        db.departments.push(newDept);
+        showToast('Department Created');
+    }
+
+    saveToStorage();
+    renderDepartmentsTable();
+
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('departmentModal'));
+    if (modal) modal.hide();
+}
+
+function prepareDeleteDepartment(id) {
+    currentDeleteDepartmentId = id;
+    const dept = db.departments.find(d => d.id === id);
+    if (dept) {
+        document.getElementById('delete-dept-display').textContent = dept.name;
     }
 }
 
-function deleteDepartment(id) {
-    if (confirm("Are you sure you want to delete this department?")) {
-        db.departments = db.departments.filter(d => d.id !== id);
-        saveToStorage();
-        renderDepartmentsTable();
-    }
+function confirmDeleteDepartment() {
+    if (!currentDeleteDepartmentId) return;
+    db.departments = db.departments.filter(d => d.id !== currentDeleteDepartmentId);
+    saveToStorage();
+    renderDepartmentsTable();
+    showToast('Department Deleted');
+
+    const modal = bootstrap.Modal.getInstance(document.getElementById('deleteDepartmentModal'));
+    if (modal) modal.hide();
 }
