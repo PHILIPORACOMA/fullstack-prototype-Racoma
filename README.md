@@ -690,3 +690,17 @@ This project successfully implements a full-featured, single-page application wi
 - **Total: 1,199 lines**
 
 The application is ready for demonstration and has been thoroughly tested across all major user workflows.
+
+## Recent Updates (2026-02-20)
+
+- **Departments UI updated to modal flows:** Department Add, Edit, and Delete now use Bootstrap modals instead of browser `prompt`/`confirm` dialogs. This provides a consistent UX with other admin flows.
+- **Files changed:** `index.html` (added `departmentModal` and `deleteDepartmentModal`) and `script.js` (added modal handlers: `prepareAddDepartment`, `prepareEditDepartment`, `handleDepartmentSubmit`, `prepareDeleteDepartment`, `confirmDeleteDepartment`).
+- **How to test Departments:**
+  1. Login as admin (`admin@example.com` / `Password123!`).
+  2. Open **Departments** from the admin dropdown.
+  3. Click **+ Add Department** → fill `Department Name` and optional `Description` → click **Save**.
+  4. Click **Edit** on any department to open the Add/Edit modal pre-filled; make changes and **Save**.
+  5. Click **Delete** on a department to open the red confirmation modal; choose **Cancel** or **Delete**.
+  6. Changes persist in `localStorage` under the key `fpt_demo_v1`.
+
+This update improves UX consistency and prepares the Departments flow for future validation and server integration.
